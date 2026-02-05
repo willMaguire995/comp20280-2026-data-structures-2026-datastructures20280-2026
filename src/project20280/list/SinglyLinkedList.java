@@ -24,6 +24,8 @@ public class SinglyLinkedList<E> implements List<E> {
          */
         public Node(E e, Node<E> n) {
             // TODO
+            element = e;
+            next = n;
         }
 
         // Accessor methods
@@ -34,7 +36,7 @@ public class SinglyLinkedList<E> implements List<E> {
          * @return the element stored at the node
          */
         public E getElement() {
-            return null;
+            return element;
         }
 
         /**
@@ -44,7 +46,7 @@ public class SinglyLinkedList<E> implements List<E> {
          */
         public Node<E> getNext() {
             // TODO
-            return null;
+            return next;
         }
 
         // Modifier methods
@@ -56,6 +58,7 @@ public class SinglyLinkedList<E> implements List<E> {
          */
         public void setNext(Node<E> n) {
             // TODO
+            next = n;
         }
     } //----------- end of nested Node class -----------
 
@@ -76,24 +79,52 @@ public class SinglyLinkedList<E> implements List<E> {
     //@Override
     public int size() {
         // TODO
-        return 0;
+        int size = 0;
+        Node<E> currPos = new Node<>(head.element, head.next);
+        if(head == null){
+            return 0;
+        }
+        else{
+            while(currPos != null){
+                size++;
+                currPos = currPos.getNext();
+            }
+            return size;
+        }
     }
 
     //@Override
     public boolean isEmpty() {
         // TODO
-        return false;
+        return head == null;
     }
 
     @Override
     public E get(int position) {
         // TODO
-        return null;
+        int currPos = 0;
+        Node<E> currNode = new Node<>(head.element, head.next);
+        while(currPos != position){
+            currNode = currNode.getNext();
+            currPos++;
+        }
+        return currNode.getElement();
     }
 
     @Override
     public void add(int position, E e) {
         // TODO
+        if(isEmpty()){
+            System.out.println("The lsit is empty");
+        }
+        else{
+            int currPos = 0;
+            Node<E> currNode = new Node<>(head.element, head.next);
+            while(currPos != position){
+                currNode = currNode.getNext();
+                currPos++;
+            }
+        }
     }
 
 
