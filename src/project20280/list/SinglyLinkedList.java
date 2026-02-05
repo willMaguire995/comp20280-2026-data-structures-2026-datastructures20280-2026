@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 public class SinglyLinkedList<E> implements List<E> {
 
+    //first change
     private static class Node<E> {
 
         private final E element;            // reference to the element stored at this node
