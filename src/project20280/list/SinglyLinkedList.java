@@ -98,7 +98,7 @@ public class SinglyLinkedList<E> implements List<E> {
     @Override
     public E get(int position) {
         int currPos = 0;
-        Node<E> currNode = new Node<>(head.element, head.next);
+        Node<E> currNode = head;
         while(currPos != position){
             currNode = currNode.getNext();
             currPos++;

@@ -74,8 +74,8 @@ class DoublyLinkedListTest {
         DoublyLinkedList<Integer> ll = new DoublyLinkedList<>();
         for (int i = 0; i < 5; ++i) ll.addLast(i);
 
-        ll.remove(1);
-        assertEquals("[1, 2, 3, 4]", ll.toString());
+        ll.remove(2);
+        assertEquals("[0, 1, 3, 4]", ll.toString());
     }
 
     @Test
@@ -84,7 +84,7 @@ class DoublyLinkedListTest {
         for (int i = 0; i < 5; ++i) ll.addLast(i);
 
         ll.add(2, -1);
-        assertEquals("[0, -1, 1, 2, 3, 4]", ll.toString());
+        assertEquals("[0, 1, -1, 2, 3, 4]", ll.toString());
     }
 
     @Test

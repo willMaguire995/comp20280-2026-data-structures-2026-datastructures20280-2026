@@ -65,13 +65,13 @@ public class DoublyLinkedList<E> implements List<E> {
                 size++;
                 currPos = currPos.getNext();
             }
-            return size;
+            return size - 2;
         }
     }
 
     @Override
     public boolean isEmpty() {
-        return size() <= 2;
+        return size() <= 0;
     }
 
     @Override
@@ -92,7 +92,7 @@ public class DoublyLinkedList<E> implements List<E> {
             temp = head;
 
 
-            while(parser != i-1){
+            while(parser != i+1){
                 parser++;
                 temp = temp.getNext();
             }
@@ -105,6 +105,7 @@ public class DoublyLinkedList<E> implements List<E> {
 
     @Override
     public void add(int i, E e) {
+        //TODO
         Node<E> currNode;
         Node<E> prevNode;
         Node<E> newNode;
@@ -117,7 +118,7 @@ public class DoublyLinkedList<E> implements List<E> {
             currNode = head;
             prevNode = null;
             parser = 0;
-            while(parser != i){
+            while(parser != i+1){
                 prevNode = currNode;
                 currNode = currNode.getNext();
                 parser++;
@@ -132,9 +133,10 @@ public class DoublyLinkedList<E> implements List<E> {
 
     @Override
     public E remove(int i) {
+        //TODO
         E e = null;
         if(isEmpty()){
-            System.out.println("The list is empty");
+           return e;
         }
         else if(size() < i){
             System.out.println("List is not that big");
@@ -143,7 +145,8 @@ public class DoublyLinkedList<E> implements List<E> {
             int currPos = 0;
             Node<E> currNode = head;
             Node<E> prevNode = null;
-            while(currPos != i){
+            //need to review logic of condition to why it needs +1
+            while(currPos != i+1){
                 prevNode = currNode;
                 currNode = currNode.getNext();
                 currPos++;
@@ -180,10 +183,17 @@ public class DoublyLinkedList<E> implements List<E> {
 
     private E remove(Node<E> n) {
         // TODO
+        Node<E> prev;
+        Node<E> next;
         if(isEmpty()){
             return null;
         }
         else{
+            next = n .getNext();
+            prev = n.getPrev();
+
+            next.setPrev(prev);
+            prev.setNext(next);
             return n.getData();
         }
     }
