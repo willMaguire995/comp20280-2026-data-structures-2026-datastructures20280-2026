@@ -123,7 +123,7 @@ public class SinglyLinkedList<E> implements List<E> {
                 currNode = currNode.getNext();
                 currPos++;
             }
-            Node<E> newNode = new Node<E>(e, currNode);
+            Node<E> newNode = new Node<>(e, currNode);
             if(prevNode != null){
                 prevNode.setNext(newNode);
             }
@@ -240,6 +240,7 @@ public class SinglyLinkedList<E> implements List<E> {
             curr = curr.next;
             return res;
         }
+
     }
 
     public String toString() {
@@ -257,6 +258,7 @@ public class SinglyLinkedList<E> implements List<E> {
 
     public static void main(String[] args) {
         SinglyLinkedList<Integer> ll = new SinglyLinkedList<Integer>();
+
         System.out.println("ll " + ll + " isEmpty: " + ll.isEmpty());
         //LinkedList<Integer> ll = new LinkedList<Integer>();
 
@@ -273,9 +275,15 @@ public class SinglyLinkedList<E> implements List<E> {
         //ll.removeFirst();
         //System.out.println("I accept your apology");
         //ll.add(3, 2);
-        System.out.println(ll);
-        ll.remove(5);
-        System.out.println(ll);
+        //System.out.println(ll);
+        //ll.remove(5);
+        //System.out.println(ll);
+
+        Iterator<Integer> sllIt = ll.iterator();
+        while(sllIt.hasNext()){
+            int n = sllIt.next();
+            System.out.println(n);
+        }
 
     }
 }
