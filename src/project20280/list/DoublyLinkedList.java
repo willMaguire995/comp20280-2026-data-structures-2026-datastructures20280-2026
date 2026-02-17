@@ -65,6 +65,7 @@ public class DoublyLinkedList<E> implements List<E> {
                 size++;
                 currPos = currPos.getNext();
             }
+            //2 is subtracted from size to account for the placeholder nodes(head/tail)
             return size - 2;
         }
     }

@@ -12,6 +12,7 @@ public class LinkedStack<E> implements Stack<E> {
 
     public LinkedStack() {
         // TODO
+        ll = new DoublyLinkedList<>();
     }
 
     @Override
@@ -27,21 +28,44 @@ public class LinkedStack<E> implements Stack<E> {
     @Override
     public void push(E e) {
         // TODO
+        ll.addLast(e);
     }
 
     @Override
     public E top() {
         // TODO
-        return null;
+        return ll.last();
     }
 
     @Override
     public E pop() {
         // TODO
-        return null;
+        return ll.removeLast();
     }
 
     public String toString() {
-        return ll.toString();
+        String listString = ll.toString();
+        String stackString = "";
+        String half1;
+        String half2;
+        int i;
+
+        //reverses string and strips ',' and '[]' from the string
+        for(i = 1; i < listString.length()-1; i++){
+
+            if(listString.charAt(i) == ','){
+
+            }
+            else{
+                stackString = listString.charAt(i) + stackString;
+            }
+        }
+
+        //adds non-numeric characters back to string
+        stackString = stackString.replace(" ", ", ");
+        stackString = stackString + "]";
+        stackString = "[" + stackString;
+
+        return stackString;
     }
 }

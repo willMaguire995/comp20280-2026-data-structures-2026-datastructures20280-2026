@@ -2,7 +2,16 @@ package project20280.stacksqueues;
 
 import project20280.interfaces.Stack;
 
+enum ERROR_CODES{
+    STACK_EMPTY{
+        public int getErrorCode(){
+            return -1;
+        }
+    }
+}
+
 public class ArrayStack<E> implements Stack<E> {
+
 
     /**
      * Default array capacity.
@@ -17,7 +26,7 @@ public class ArrayStack<E> implements Stack<E> {
     /**
      * Index of the top element of the stack in the array.
      */
-    private final int t = -1;                      // index of the top element in stack
+    private int t = -1;                      // index of the top element in stack
 
     /**
      * Constructs an empty stack using the default array capacity.
@@ -34,6 +43,7 @@ public class ArrayStack<E> implements Stack<E> {
     @SuppressWarnings({"unchecked"})
     public ArrayStack(int capacity) {        // constructs stack with given capacity
         // TODO
+        data = (E[]) new Object[capacity];
     }
 
     /**
@@ -43,7 +53,7 @@ public class ArrayStack<E> implements Stack<E> {
      */
     @Override
     public int size() {
-        return (t + 1);
+        return (t+1);
     }
 
     /**
@@ -65,6 +75,13 @@ public class ArrayStack<E> implements Stack<E> {
     @Override
     public void push(E e) {
         // TODO
+
+        if(t < CAPACITY){
+            data[++t] = e;
+        }
+        else{
+            System.out.println("Excpetion here");
+        }
     }
 
     /**
@@ -75,7 +92,7 @@ public class ArrayStack<E> implements Stack<E> {
     @Override
     public E top() {
         // TODO
-        return null;
+        return data[size() - 1];
     }
 
     /**
@@ -86,7 +103,14 @@ public class ArrayStack<E> implements Stack<E> {
     @Override
     public E pop() {
         // TODO
-        return null;
+        if(t == -1){
+            System.out.println("Exception: ");
+            return (E) ERROR_CODES.STACK_EMPTY;
+        }
+        else{
+            return data[t--];
+        }
+
     }
 
     /**
@@ -115,7 +139,7 @@ public class ArrayStack<E> implements Stack<E> {
         S.push(5);                              // contents: (5)
         S.push(3);                              // contents: (5, 3)
         System.out.println(S.size());           // contents: (5, 3)     outputs 2
-        System.out.println(S.pop());            // contents: (5)        outputs 3
+        System.out.println("popped: " + S.pop());            // contents: (5)        outputs 3
         System.out.println(S.isEmpty());        // contents: (5)        outputs false
         System.out.println(S.pop());            // contents: ()         outputs 5
         System.out.println(S.isEmpty());        // contents: ()         outputs true

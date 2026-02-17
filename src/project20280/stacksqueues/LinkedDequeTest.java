@@ -61,7 +61,9 @@ class LinkedDequeTest {
 
         for (int i = 0; i < 10; ++i)
             s.addFirst(i);
+
         s.removeLast();
+        System.out.println(s);
         assertEquals("[9, 8, 7, 6, 5, 4, 3, 2, 1]", s.toString());
     }
 }

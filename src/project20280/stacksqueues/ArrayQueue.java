@@ -6,11 +6,13 @@ public class ArrayQueue<E> implements Queue<E> {
 
     private static final int CAPACITY = 1000;
     private E[] data;
-    private final int front = 0;
-    private final int size = 0;
+    private int front = 0;
+    private int rear = 1;
+    private int size = 0;
 
     public ArrayQueue(int capacity) {
         // TODO
+        data = (E[]) new Object[capacity];
 
     }
 
@@ -32,6 +34,19 @@ public class ArrayQueue<E> implements Queue<E> {
     @Override
     public void enqueue(E e) {
         // TODO
+        if(size < CAPACITY) {
+            if (size() == 0) {
+                data[0] = e;
+                size++;
+            } else {
+                data[rear] = e;
+                size++;
+                rear++;
+            }
+        }
+        else{
+            System.out.println("Out of bounds exception");
+        }
     }
 
     @Override
@@ -42,7 +57,22 @@ public class ArrayQueue<E> implements Queue<E> {
     @Override
     public E dequeue() {
         // TODO
-        return null;
+        E temp;
+        if(size < 2){
+            temp = data[front];
+            front=0;
+            rear = 1;
+            size--;
+            return temp;
+        }
+        else{
+            temp = data[front];
+            front++;
+            size--;
+            if(rear == CAPACITY)rear = 0;
+            if(front == CAPACITY) front = 0;
+            return temp;
+        }
     }
 
     public String toString() {
